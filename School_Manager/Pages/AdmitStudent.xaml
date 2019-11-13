@@ -1,0 +1,351 @@
+﻿<local:BasePage x:TypeArguments="local:AdmitStudentViewModel" x:Class="School_Manager.AdmitStudent"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:School_Manager"
+      mc:Ignorable="d" 
+      Title="AdmitStudent" 
+      Background="{StaticResource LightColorBrush}">
+    
+
+    <ScrollViewer>
+
+        <!--Main Container-->
+        <StackPanel x:Name="Grid" Margin="20 0">
+
+            <!--Class-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Classes-->
+                <ComboBox ItemsSource="{Binding ClassNames}"
+                          Grid.Column="0" Cursor="Hand"
+                          SelectedItem="{Binding SelectedClass}"
+                          Padding="0 15"
+                          VerticalAlignment="Bottom"
+                          Margin="0 0 0 12"
+                          MaxWidth="200"
+                          MinWidth="150"
+                          materialDesign:HintAssist.Hint="Class"
+                          materialDesign:ComboBoxAssist.ClassicMode="True"
+                          materialDesign:HintAssist.IsFloating="True"
+                          materialDesign:HintAssist.FloatingScale="1">
+                    <ComboBox.Text>
+                        <Binding
+                                Path="SelectedClass"
+                                UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <local:NotEmptyValidationRule
+                                        ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.Text>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding ClassSelectionChanged}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+
+                <!--Sections-->
+                <StackPanel Grid.Column="1">
+                    <ComboBox ItemsSource="{Binding SectionNames}"
+                              Grid.Column="1" Cursor="Hand"
+                              SelectedItem="{Binding SelectedSection}"
+                              IsEnabled="{Binding IsSectionVisible}"
+                              Padding="0 15"
+                              MaxWidth="200"
+                              MinWidth="150"
+                              VerticalAlignment="Bottom"
+                              materialDesign:HintAssist.Hint="Section"
+                              materialDesign:ComboBoxAssist.ClassicMode="True"
+                              materialDesign:HintAssist.IsFloating="True"
+                              materialDesign:HintAssist.FloatingScale="1"/>
+                    <TextBlock  Text="Feild is required."
+                                MaxWidth="200"
+                                MinWidth="150"
+                                FontSize="{StaticResource FontSizeVerySmall}"
+                                FontWeight="Regular"
+                                Foreground="{StaticResource RedColorBrush}"
+                                Visibility="{Binding IsSectionValid, Converter={local:BoolToInverseVisibilityConverter}}" />
+                </StackPanel>
+
+            </Grid>
+
+            <!--StackPanel to stack all child panels-->
+            <StackPanel Grid.Row="0"
+                        Visibility="{Binding PanelsVisibility}">
+                
+                <StackPanel>
+                        
+                <!--#region Student Information Panel-->
+                <!--Header-->
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                        <local:Header Heading="Student Information" Margin="0 20 25 0"/>
+                        <Button Style="{StaticResource IconGrowButton}"
+                                Grid.Column="1"
+                                Content="{StaticResource UndoIcon}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Foreground="{StaticResource SecondaryColorBrush}"
+                                Command="{Binding ResetStudentsPanelCommand}"
+                                ToolTip="Reset"/>
+                </Grid>
+
+                <!--Student Photo Panel-->
+                <StackPanel >
+                    <StackPanel Visibility="{Binding StudentPhotoVisibility , Converter={local:BoolToVisibilityConverter}}"
+                                HorizontalAlignment="Left">
+
+                        <!--Student Image-->
+                        <Image Width="150" 
+                               Margin="5"
+                               Source="{Binding StudentPhoto}"/>
+                        <!--Select/Change Photo-->
+                        <Button Width="150" 
+                                Style="{StaticResource HoverlessMainButton}"
+                                Margin="5 0 5 5" 
+                                Content="Select Photo"
+                                Command="{Binding StudentPhotoCommand}"
+                                VerticalAlignment="Bottom"/>
+
+                    </StackPanel>
+
+                    <!--Students Panel-->
+                    <ItemsControl 
+                                  ItemsSource="{Binding StudentsEntites, Mode=TwoWay}"
+                                  Style="{StaticResource EditRecords}"
+                                  />
+                </StackPanel>
+                <!--#endregion-->
+
+                </StackPanel>
+
+                <!--#region Parent Information Panel-->
+
+                    <StackPanel>
+                        
+                    <!--Header-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <local:Header Heading="Parent Information" Margin="0 20 25 0"/>
+                        <Button Style="{StaticResource IconGrowButton}"
+                            Grid.Column="1"
+                            Content="{StaticResource UndoIcon}"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Foreground="{StaticResource SecondaryColorBrush}"
+                            Command="{Binding ResetParentsPanelCommand}"
+                            ToolTip="Reset"/>
+                    </Grid>
+
+
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <!--Father Photo-->
+                            <StackPanel Grid.Column="0"
+                                        HorizontalAlignment="Left"
+                                        Visibility="{Binding FatherPhotoVisibility , Converter={local:BoolToVisibilityConverter}}">
+
+                                <Image Source="{Binding FatherPhoto}"
+                                       Width="150" 
+                                       Margin="5"/>
+                                <Button Width="200" 
+                                        Style="{StaticResource HoverlessMainButton}"
+                                        Margin="5 10 5 15" 
+                                        Content="Select Father Photo"
+                                        Command="{Binding FatherPhotoCommand}"
+                                        VerticalAlignment="Bottom"
+                                        />  
+
+                            </StackPanel>
+
+                             <!--Mother Photo-->
+                            <StackPanel Grid.Column="1"
+                                        Margin="0 0 35 0"
+                                        HorizontalAlignment="Right"
+                                        Visibility="{Binding MotherPhotoVisibility , Converter={local:BoolToVisibilityConverter}}">
+
+                                <Image Source="{Binding MotherPhoto}"
+                                       Width="150" 
+                                       Margin="5"/>
+                                <Button Width="200" 
+                                        Style="{StaticResource HoverlessMainButton}"
+                                        Margin="5 10 5 15" 
+                                        Content="Select Mother Photo"
+                                        Command="{Binding MotherPhotoCommand}"
+                                        VerticalAlignment="Bottom"
+                                         /> 
+
+                            </StackPanel>
+
+                        </Grid>
+
+                        <!--Parents Panel-->
+                            <ItemsControl Style="{StaticResource EditRecords}"
+                                  ItemsSource="{Binding ParentsEntites, Mode=TwoWay}"
+                                  />
+                    </StackPanel>
+                    <!--#endregion-->
+
+                    </StackPanel>
+                    
+                
+                
+                <!--Fee Information-->
+
+                <StackPanel>
+                            <!--Header-->
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                        <local:Header Heading="Fee Information" Margin="0 20 25 0"/>
+                        <Button Style="{StaticResource IconGrowButton}"
+                                    Grid.Column="1"
+                                    Content="{StaticResource UndoIcon}"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Foreground="{StaticResource SecondaryColorBrush}"
+                                    Command="{Binding ResetStudentsPanelCommand}"
+                                    ToolTip="Reset"/>
+                        </Grid>
+
+                       
+                        <StackPanel Margin="0 20 40 0">
+                        
+                            <!--Header-->
+                            <Border  CornerRadius="7" 
+                                     Background="{StaticResource VeryDarkGrayBrush}" >
+                                     <Grid Margin="10" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0"
+                                                           Text="Fee"
+                                                           FontSize="{StaticResource FontSizeRegular}"
+                                                           FontWeight="SemiBold"
+                                                           HorizontalAlignment="Center"
+                                                           Foreground="{StaticResource LightColorBrush}"/>
+                                                <TextBlock Grid.Column="1"
+                                                           Text="Amount"
+                                                           FontSize="{StaticResource FontSizeRegular}"
+                                                           FontWeight="SemiBold"
+                                                           HorizontalAlignment="Center"
+                                                           Foreground="{StaticResource LightColorBrush}"/>
+                                                <TextBlock Grid.Column="2"
+                                                           Text="Discount"
+                                                           FontSize="{StaticResource FontSizeRegular}"
+                                                           FontWeight="SemiBold"
+                                                           HorizontalAlignment="Center"
+                                                           Foreground="{StaticResource LightColorBrush}"/>
+                                            </Grid>
+                            </Border>
+                        
+                            <!--Fee with discount-->
+                        <ItemsControl ItemsSource="{Binding FeeEntities}" AlternationCount="2" >
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Name="Row">
+                                            <Grid Margin="4" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    
+                                                </Grid.ColumnDefinitions>
+                                                <!--Fee-->
+                                                <TextBlock Grid.Column="0"
+                                                           VerticalAlignment="Center"
+                                                           Text="{Binding Fee}"
+                                                           FontSize="{StaticResource FontSizeMedium}"
+                                                           Foreground="{StaticResource PrimaryColorBrush}"
+                                                           HorizontalAlignment="Center"/>
+                                                <!--Amount-->
+                                                <TextBlock Grid.Column="1"
+                                                           VerticalAlignment="Center"
+                                                           Text="{Binding Amount}"
+                                                           FontSize="{StaticResource FontSizeMedium}"
+                                                           HorizontalAlignment="Center"/>
+                        
+                                                <!--Edit Discount-->
+                                                <StackPanel Grid.Column="2">
+                                                    
+                                                <TextBox MaxWidth="150"
+                                                         VerticalAlignment="Bottom"
+                                                         Text="{Binding Discount}"
+                                                         FontSize="{StaticResource FontSizeMedium}"
+                                                         materialDesign:HintAssist.Hint="Discount"/>
+                                                <TextBlock Text="{Binding DiscountAlert}"
+                                                           MaxWidth="150"
+                                                           FontSize="{StaticResource FontSizeVerySmall}"
+                                                           FontWeight="Regular"
+                                                           Foreground="{StaticResource RedColorBrush}"
+                                                           Visibility="{Binding IsDiscountValid, Converter={local:BoolToInverseVisibilityConverter}}" />
+
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                        
+                                        <!--Alternating row color for records-->
+                                        <DataTemplate.Triggers>
+                                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                                <Setter Property="Background" TargetName="Row">
+                                                    <Setter.Value>
+                                                        <SolidColorBrush Color="{StaticResource VeryLightGray}"/>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Trigger>
+                                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                                <Setter Property="Background" TargetName="Row">
+                                                    <Setter.Value>
+                                                        <SolidColorBrush Color="{StaticResource LightGray}"/>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Trigger>
+                                        </DataTemplate.Triggers>
+                                    </DataTemplate>
+                        
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        
+                        </StackPanel>
+                        
+                    </StackPanel>
+                    
+                
+                <Button Content="Admit Student" 
+                        Grid.Row="1"
+                        FontSize="{StaticResource FontSizeSmall}"
+                        HorizontalAlignment="Right"
+                        Command="{Binding AdmitStudentCommand}"
+                        Margin="0 20 40 0"/>
+
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+
+</local:BasePage>

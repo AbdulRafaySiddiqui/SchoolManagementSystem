@@ -1,0 +1,20 @@
+﻿School_Manager
+
+
+winexe
+C#
+.cs
+C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\Release\
+School_Manager
+none
+false
+TRACE
+C:\Users\Dell\source\repos\School_Manager\School_Manager\App.xaml
+72351025969
+
+183-387963557
+44-1079188548
+Dialogs\SetProductInformation.xaml;Pages\About.xaml;Pages\CreateStudentInfo.xaml;Pages\Dashboard.xaml;Dialogs\Base\DialogWindow.xaml;Dialogs\Base\DialogPage.xaml;Dialogs\DeleteStudentDialog.xaml;Dialogs\EditParentsRecord.xaml;Dialogs\EditTeacher.xaml;Dialogs\MessageDialog.xaml;Dialogs\ViewFeeDetails.xaml;Dialogs\ViewParentRecord.xaml;Dialogs\ViewTeacher.xaml;ID Cards\IDCardThumbnail.xaml;ID Cards\Students\Student_Card_1_Back.xaml;ID Cards\Students\Student_Card_1_Front.xaml;ID Cards\Teachers\TeacherIDCard1.xaml;Pages\Base\CreateCustomStudentIDCard.xaml;Pages\CreateCustomIDCards.xaml;Pages\CreateStudentIDCard.xaml;Pages\EditClass.xaml;Pages\EditStudentInfo.xaml;Pages\EditTeacherInfo.xaml;Pages\EnterExpense.xaml;Pages\FeeRecord.xaml;Pages\ImportStudents.xaml;Pages\ImportTeacherData.xaml;Pages\MarkAttendenceManually.xaml;Pages\Parents.xaml;Pages\PromoteStudents.xaml;Pages\Registeration.xaml;Pages\SendMessage.xaml;Pages\StudentAttendence.xaml;Pages\TakeAttendence.xaml;Pages\TeacherAttendence.xaml;Pages\TeacherSalary.xaml;SalarySheet\SalarySheet.xaml;Styles\CardDesignerTemplates.xaml;Styles\PhotoTemplate.xaml;UserControls\CardDesigner.xaml;UserControls\DragableContent.xaml;UserControls\Header.xaml;UserControls\RegistrationControl.xaml;Window\LoginWindow.xaml;Window\MainWindow.xaml;Pages\AddTeacher.xaml;Pages\AdmitStudent.xaml;Pages\AdmitTeacher.xaml;Pages\CreateTeachers.xaml;Pages\CreateClass.xaml;Dialogs\EditStudentRecord.xaml;Pages\CreateFeeRecord.xaml;Pages\CreateFeeVoucher.xaml;Pages\FeeCollection.xaml;Pages\CreateAccount.xaml;Pages\LoginPage.xaml;Pages\Students.xaml;Dialogs\ViewStudentRecord.xaml;Pages\Teachers.xaml;Styles\Windows.xaml;Styles\Templates.xaml;Styles\TextFeilds.xaml;Styles\Fonts.xaml;Styles\Colors.xaml;Styles\Buttons.xaml;UserControls\CustomDataGrid.xaml;UserControls\PageHost.xaml;UserControls\SearchableDataGrid.xaml;UserControls\SearchBox.xaml;UserControls\SideMenu.xaml;UserControls\SideMenuButton.xaml;Window\RegistrationWindow.xaml;
+
+True
+

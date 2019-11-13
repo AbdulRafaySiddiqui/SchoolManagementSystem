@@ -1,0 +1,132 @@
+27-Oct-19 10:18:56 AM 
+ System.ArgumentNullException: Value cannot be null.
+Parameter name: value
+   at System.Boolean.Parse(String value)
+   at School_Manager.DataAccess.GetCardTemplate(String CardName) in C:\Users\Dell\source\repos\School_Manager\School_Manager\Data Management\DataAccess.cs:line 1960
+   at School_Manager.CreateCustomIDCardsViewModel.CardChanged() in C:\Users\Dell\source\repos\School_Manager\School_Manager\ViewModels\Pages\CreateCustomIDCardsViewModel.cs:line 719 
+
+27-Oct-19 10:29:56 AM 
+ System.ArgumentNullException: Value cannot be null.
+Parameter name: value
+   at System.Boolean.Parse(String value)
+   at School_Manager.DataAccess.GetCardTemplate(String CardName) in C:\Users\Dell\source\repos\School_Manager\School_Manager\Data Management\DataAccess.cs:line 1960
+   at School_Manager.CreateCustomIDCardsViewModel.CardChanged() in C:\Users\Dell\source\repos\School_Manager\School_Manager\ViewModels\Pages\CreateCustomIDCardsViewModel.cs:line 719 
+
+28-Oct-19 1:16:33 PM 
+ System.IO.FileNotFoundException: Could not find file 'C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\Licence.txt'.
+File name: 'C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\Licence.txt'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at School_Manager.AboutViewModel.OpenLicence() in C:\Users\Dell\source\repos\School_Manager\School_Manager\ViewModels\Pages\AboutViewModel.cs:line 78 
+
+28-Oct-19 1:16:36 PM 
+ System.IO.FileNotFoundException: Could not find file 'C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\Licence.txt'.
+File name: 'C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\Licence.txt'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at School_Manager.AboutViewModel.OpenLicence() in C:\Users\Dell\source\repos\School_Manager\School_Manager\ViewModels\Pages\AboutViewModel.cs:line 78 
+
+09-Nov-19 1:42:40 PM 
+ System.Data.SqlClient.SqlException (0x80131904): The DELETE statement conflicted with the REFERENCE constraint "FK__Students__Class___2062B9C8". The conflict occurred in database "abdulrafaysiddiqui_TestDB", table "dbo.Students", column 'Class_ID'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at School_Manager.DataAccess.ExecuteQuery(String query) in C:\Users\Dell\source\repos\School_Manager\School_Manager\Data Management\DataAccess.cs:line 47
+   at School_Manager.EditClassViewModel.DeleteClass() in C:\Users\Dell\source\repos\School_Manager\School_Manager\ViewModels\Pages\EditClassViewModel.cs:line 246
+ClientConnectionId:0fd61e65-0230-434b-8045-09f6e0eb6d06
+Error Number:547,State:0,Class:16 
+
+09-Nov-19 1:44:57 PM 
+ System.NullReferenceException: Object reference not set to an instance of an object.
+   at School_Manager.DialogWindowViewModel..ctor(Window DialogWindow) in C:\Users\Dell\source\repos\School_Manager\School_Manager\Dialogs\Base\DialogWindowViewModel.cs:line 63
+   at School_Manager.DialogManager.ShowMessageDialog(String Title, String Message, DialogTitleColor DialogTitleColor) in C:\Users\Dell\source\repos\School_Manager\School_Manager\Dialogs\DialogManager.cs:line 90
+   at School_Manager.ImportStudentsViewModel.<Import>d__51.MoveNext() in C:\Users\Dell\source\repos\School_Manager\School_Manager\ViewModels\Pages\ImportStudentsViewModel.cs:line 178 
+
+09-Nov-19 1:48:15 PM 
+ System.NullReferenceException: Object reference not set to an instance of an object.
+   at School_Manager.DialogWindowViewModel..ctor(Window DialogWindow) in C:\Users\Dell\source\repos\School_Manager\School_Manager\Dialogs\Base\DialogWindowViewModel.cs:line 63
+   at School_Manager.DialogManager.ShowMessageDialog(String Title, String Message, DialogTitleColor DialogTitleColor) in C:\Users\Dell\source\repos\School_Manager\School_Manager\Dialogs\DialogManager.cs:line 90
+   at School_Manager.ImportStudentsViewModel.<Import>d__51.MoveNext() in C:\Users\Dell\source\repos\School_Manager\School_Manager\ViewModels\Pages\ImportStudentsViewModel.cs:line 178 
+
+09-Nov-19 1:49:44 PM 
+ System.NullReferenceException: Object reference not set to an instance of an object.
+   at School_Manager.DialogWindowViewModel..ctor(Window DialogWindow) in C:\Users\Dell\source\repos\School_Manager\School_Manager\Dialogs\Base\DialogWindowViewModel.cs:line 63
+   at School_Manager.DialogManager.ShowMessageDialog(String Title, String Message, DialogTitleColor DialogTitleColor) in C:\Users\Dell\source\repos\School_Manager\School_Manager\Dialogs\DialogManager.cs:line 90
+   at School_Manager.ImportStudentsViewModel.<Import>d__51.MoveNext() in C:\Users\Dell\source\repos\School_Manager\School_Manager\ViewModels\Pages\ImportStudentsViewModel.cs:line 178 
+
+09-Nov-19 1:52:49 PM 
+ System.NullReferenceException: Object reference not set to an instance of an object.
+   at School_Manager.DialogWindowViewModel..ctor(Window DialogWindow) in C:\Users\Dell\source\repos\School_Manager\School_Manager\Dialogs\Base\DialogWindowViewModel.cs:line 63
+   at School_Manager.DialogManager.ShowMessageDialog(String Title, String Message, DialogTitleColor DialogTitleColor) in C:\Users\Dell\source\repos\School_Manager\School_Manager\Dialogs\DialogManager.cs:line 90
+   at School_Manager.ImportStudentsViewModel.<Import>d__51.MoveNext() in C:\Users\Dell\source\repos\School_Manager\School_Manager\ViewModels\Pages\ImportStudentsViewModel.cs:line 178 
+
+09-Nov-19 2:05:51 PM 
+ System.NullReferenceException: Object reference not set to an instance of an object.
+   at School_Manager.DialogWindowViewModel..ctor(Window DialogWindow) in C:\Users\Dell\source\repos\School_Manager\School_Manager\Dialogs\Base\DialogWindowViewModel.cs:line 63
+   at School_Manager.DialogManager.ShowMessageDialog(String Title, String Message, DialogTitleColor DialogTitleColor) in C:\Users\Dell\source\repos\School_Manager\School_Manager\Dialogs\DialogManager.cs:line 90
+   at School_Manager.ImportStudentsViewModel.<Import>d__51.MoveNext() in C:\Users\Dell\source\repos\School_Manager\School_Manager\ViewModels\Pages\ImportStudentsViewModel.cs:line 178 
+
+09-Nov-19 2:13:49 PM 
+ System.NullReferenceException: Object reference not set to an instance of an object.
+   at School_Manager.DialogWindowViewModel..ctor(Window DialogWindow) in C:\Users\Dell\source\repos\School_Manager\School_Manager\Dialogs\Base\DialogWindowViewModel.cs:line 63
+   at School_Manager.DialogManager.ShowMessageDialog(String Title, String Message, DialogTitleColor DialogTitleColor) in C:\Users\Dell\source\repos\School_Manager\School_Manager\Dialogs\DialogManager.cs:line 90
+   at School_Manager.ImportStudentsViewModel.<Import>d__51.MoveNext() in C:\Users\Dell\source\repos\School_Manager\School_Manager\ViewModels\Pages\ImportStudentsViewModel.cs:line 178 
+
+09-Nov-19 2:16:27 PM 
+ System.InvalidOperationException: Sequence contains more than one element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   at School_Manager.DialogWindowViewModel..ctor(Window DialogWindow) in C:\Users\Dell\source\repos\School_Manager\School_Manager\Dialogs\Base\DialogWindowViewModel.cs:line 63
+   at School_Manager.DialogManager.ShowMessageDialog(String Title, String Message, DialogTitleColor DialogTitleColor) in C:\Users\Dell\source\repos\School_Manager\School_Manager\Dialogs\DialogManager.cs:line 90
+   at School_Manager.ImportStudentsViewModel.<Import>d__51.MoveNext() in C:\Users\Dell\source\repos\School_Manager\School_Manager\ViewModels\Pages\ImportStudentsViewModel.cs:line 178 
+
+12-Nov-19 12:46:15 AM 
+ System.ArgumentNullException: String reference not set to an instance of a String.
+Parameter name: s
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.DateTime.Parse(String s)
+   at School_Manager.ViewFeeDetailsViewModel.EditFee(Object parameter) in C:\Users\Dell\source\repos\School_Manager\School_Manager\ViewModels\Dialogs\ViewFeeDetailsViewModel.cs:line 222 
+
+12-Nov-19 12:48:34 AM 
+ System.ArgumentNullException: String reference not set to an instance of a String.
+Parameter name: s
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.DateTime.Parse(String s)
+   at School_Manager.ViewFeeDetailsViewModel.EditFee(Object parameter) in C:\Users\Dell\source\repos\School_Manager\School_Manager\ViewModels\Dialogs\ViewFeeDetailsViewModel.cs:line 222 
+
+13-Nov-19 8:58:13 AM 
+ System.IO.IOException: The process cannot access the file 'F:\SALARY SHEETS\FEES STUDENT RECORD 2019-20\Class-10.xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access)
+   at School_Manager.ImportStudentsViewModel.OpenFile() in C:\Users\Dell\source\repos\School_Manager\School_Manager\ViewModels\Pages\ImportStudentsViewModel.cs:line 78 
+
+13-Nov-19 10:18:47 AM 
+ System.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'Students' when IDENTITY_INSERT is set to OFF.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at School_Manager.DataAccess.ExecuteQuery(SqlCommand SqlCommand) in C:\Users\Dell\source\repos\School_Manager\School_Manager\Data Management\DataAccess.cs:line 63
+   at School_Manager.AdmitStudentViewModel.AdmitStudentMethod() in C:\Users\Dell\source\repos\School_Manager\School_Manager\ViewModels\Pages\AdmitStudentViewModel.cs:line 571
+ClientConnectionId:d70eaf6a-43ce-491e-8a4c-06cac7a46413
+Error Number:544,State:1,Class:16 
+
