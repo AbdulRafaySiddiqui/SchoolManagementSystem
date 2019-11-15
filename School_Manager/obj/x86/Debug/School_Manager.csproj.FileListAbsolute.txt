@@ -77,6 +77,7 @@ C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\sv\Xceed.
 C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\Dialogs\SetProductInformation.g.cs
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\Pages\About.g.cs
+C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\Pages\ApplicationSetup.g.cs
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\Pages\Dashboard.g.cs
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\Dialogs\Base\DialogWindow.g.cs
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\Dialogs\Base\DialogPage.g.cs
@@ -146,6 +147,7 @@ C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\School_Ma
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\App.baml
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\Dialogs\SetProductInformation.baml
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\Pages\About.baml
+C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\Pages\ApplicationSetup.baml
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\Pages\Dashboard.baml
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\Dialogs\Base\DialogWindow.baml
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\Dialogs\Base\DialogPage.baml
@@ -223,6 +225,3 @@ C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\School_Ma
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\School_Manager.csproj.CopyComplete
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\School_Manager.exe
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\School_Manager.pdb
-C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\Pages\ApplicationSetup.g.cs
-C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\Pages\ApplicationSetup.baml
-C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\School_Manager.csprojAssemblyReference.cache

@@ -355,14 +355,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="School_Manager.exe" size="5682624">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="School_Manager.exe" size="5688256">
       <assemblyIdentity name="School_Manager" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>KE3rwpUA9xVMyySTo3MvZaR/RH2EuskIkXBfz3BPHRY=</dsig:DigestValue>
+        <dsig:DigestValue>aH6wIDRloFOW1kY3Wd0eateU6620p2/FLQqHPcyH4p8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

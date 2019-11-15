@@ -4,6 +4,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:School_Manager"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:Converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf" xmlns:System="clr-namespace:System;assembly=mscorlib"
     x:Class="School_Manager.EditStudentRecord"
@@ -67,53 +68,21 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <!-- Classes-->
-                    <ComboBox ItemsSource="{Binding ClassNames}"
-                          Grid.Column="0"
-                          SelectedItem="{Binding SelectedClass}"
-                          Padding="0 15"
-                          VerticalAlignment="Bottom"
-                          Margin="0 0 0 12"
-                          MaxWidth="200"
-                          MinWidth="150"
-                          materialDesign:HintAssist.Hint="Class"
-                          materialDesign:ComboBoxAssist.ClassicMode="True"
-                          materialDesign:HintAssist.IsFloating="True"
-                          materialDesign:HintAssist.FloatingScale="1">
-                        <ComboBox.Text>
-                            <Binding
-                                Path="SelectedClass"
-                                UpdateSourceTrigger="PropertyChanged">
-                                <Binding.ValidationRules>
-                                    <local:NotEmptyValidationRule
-                                        ValidatesOnTargetUpdated="True" />
-                                </Binding.ValidationRules>
-                            </Binding>
-                        </ComboBox.Text>
+                    <!--Class-->
+                    <ComboBox DataContext="{Binding Classes}"
+                      Grid.Column="0" MinWidth="200" HorizontalAlignment="Center"
+                      Style="{StaticResource ComboBoxValidationTemplate}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding DataContext.ClassSelectionChanged,RelativeSource={RelativeSource AncestorType={x:Type local:BasePage}}}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </ComboBox>
 
                     <!--Sections-->
-                    <StackPanel Grid.Column="1">
-                        <ComboBox ItemsSource="{Binding SectionNames}"
-                              Grid.Column="1"
-                              SelectedItem="{Binding SelectedSection}"
-                              IsEnabled="{Binding IsSectionVisible}"
-                              Padding="0 15"
-                              MaxWidth="200"
-                              MinWidth="150"
-                              VerticalAlignment="Bottom"
-                              materialDesign:HintAssist.Hint="Section"
-                              materialDesign:ComboBoxAssist.ClassicMode="True"
-                              materialDesign:HintAssist.IsFloating="True"
-                              materialDesign:HintAssist.FloatingScale="1"/>
-                        <TextBlock  Text="Feild is required."
-                                MaxWidth="200"
-                                MinWidth="150"
-                                FontSize="{StaticResource FontSizeVerySmall}"
-                                FontWeight="Regular"
-                                Foreground="{StaticResource RedColorBrush}"
-                                Visibility="{Binding IsSectionValid, Converter={local:BoolToInverseVisibilityConverter}}" />
-                    </StackPanel>
+                    <ComboBox DataContext="{Binding Sections}"
+                      Grid.Column="1" MinWidth="200" HorizontalAlignment="Center"
+                      Style="{StaticResource ComboBoxValidationTemplate}"/>
 
                 </Grid>
                 <!--#region Student Information Panel-->

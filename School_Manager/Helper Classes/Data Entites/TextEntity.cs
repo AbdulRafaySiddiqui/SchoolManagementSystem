@@ -34,6 +34,8 @@ namespace School_Manager
             get
             {
                 {
+                    if (!IsEnabled)
+                        return true;
                     switch(ValidationType)
                     {
                         case ValidationType.None:

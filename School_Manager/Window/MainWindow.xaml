@@ -9,10 +9,9 @@
         mc:Ignorable="d"
         MinHeight="{Binding DataContext.MinWindowHeight ,RelativeSource={RelativeSource Self}}"
         MinWidth="{Binding DataContext.MinWindowWidth ,RelativeSource={RelativeSource Self}}"
-        AllowsTransparency="True"
-        WindowStyle="None" WindowState="Maximized"
+        WindowStyle="None" WindowState="Maximized" Topmost="True"
         WindowStartupLocation="CenterScreen"
-        Style="{StaticResource MainWindowStyle}">
+        Style="{StaticResource BaseWindowStyle}">
     
     <Grid>
         <Grid.ColumnDefinitions>

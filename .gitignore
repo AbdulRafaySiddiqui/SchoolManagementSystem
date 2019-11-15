@@ -1,5 +1,7 @@
 ﻿################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
-
-/.vs/School_Manager/v16/Server/sqlite3/storage.ide-shm
+bin/
+obj/
+/.vs/
+*.suo
