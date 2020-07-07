@@ -8,6 +8,7 @@ namespace School_Manager
     /// </summary>
     public class SideMenuItem : BasePropertyChanged
     {
+       
         /// <summary>
         /// font icon for the main item
         /// </summary>

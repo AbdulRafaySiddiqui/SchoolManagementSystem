@@ -9,7 +9,7 @@
     <StackPanel x:Name="stackpanel"
                 Margin="20">
         <CheckBox Content="{Binding CheckBoxContent}"
-                  Margin="10"
+                  Margin="10" Cursor="Hand"
                   IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   HorizontalAlignment="Center"/>
         
@@ -31,7 +31,7 @@
             <Button Content="{Binding OkText}"
                     Grid.Row="0"
                     Grid.ColumnSpan="2"
-                    Style="{StaticResource SecondaryButton}"
+                    Style="{StaticResource LightPrimaryFillButton}"
                     IsDefault="True"
                     IsCancel="True"
                     FontSize="{StaticResource FontSizeRegular}"
@@ -46,7 +46,7 @@
             <Button Content="{Binding OkText}"
                     Grid.Row="1"
                     Grid.Column="0"
-                    Style="{StaticResource SecondaryButton}"
+                    Style="{StaticResource LightPrimaryFillButton}"
                     IsDefault="True"
                     IsCancel="True"
                     FontSize="{StaticResource FontSizeRegular}"
@@ -60,7 +60,7 @@
             <Button Content="{Binding CancelText}"
                     Grid.Row="1"
                     Grid.Column="1"
-                    Style="{StaticResource SecondaryButton}"
+                    Style="{StaticResource LightPrimaryFillButton}"
                     IsDefault="True"
                     IsCancel="True"
                     FontSize="{StaticResource FontSizeRegular}"

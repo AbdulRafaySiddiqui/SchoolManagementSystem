@@ -15,6 +15,9 @@ namespace School_Manager
             //starts the stop watch to know how much time user is spending on application
             Helper.StartTimer();
 
+            //hook the exist event
+            this.Exit += Application_Exit;
+
             //set the master connection string for setting up application
             DataAccess.connectionString = ConfigurationManager.ConnectionStrings["MasterConnectionString"].ConnectionString;
 
@@ -28,18 +31,18 @@ namespace School_Manager
                 //set the product information
                 DataAccess.SetProductInfo();
 
-                //check if the registeration haven't expired yet
+                //check if the registration haven't expired yet
                 var registrationStatus = DataAccess.CheckRegistration();
                 if (registrationStatus.Status == RegistrationWarning.Registered)
                 {
                     //show the startup window of the application
-                    Current.MainWindow = new MainWindow();
+                    Current.MainWindow = new LoginWindow();
                     MainWindow.Show();
                 }
                 else if (registrationStatus.Status == RegistrationWarning.Alert)
                 {
                     //show the startup window of the application and registration alert
-                    Current.MainWindow = new MainWindow();
+                    Current.MainWindow = new LoginWindow();
                     MainWindow.Show();
                     DialogManager.ShowMessageDialog("Warning", $"Please register your product it will expire in {registrationStatus.DaysLeft} days.", DialogTitleColor.Yellow);
                 }

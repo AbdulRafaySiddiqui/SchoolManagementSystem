@@ -35,8 +35,7 @@ namespace School_Manager
             ClassSelectionChanged = new RelayCommand(ClassChanged);
 
             //set the properties
-            ClassNames = DataAccess.GetClassNames();
-            IsSectionVisible = false;
+            Classes.Items = DataAccess.GetClassNames();
             StudentIDName = DataAccess.GetStudentID();
             ParentIDName = DataAccess.GetParentID();
 
@@ -104,23 +103,14 @@ namespace School_Manager
         public BitmapImage MotherPhoto { get; set; }
 
         /// <summary>
-        /// list of all classes available
+        /// The class to admit student in
         /// </summary>
-        public List<string> ClassNames { get; set; }
+        public ListEntity Classes { get; set; } = new ListEntity { FeildName = "Class", ValidationType = ValidationType.NotEmpty };
 
         /// <summary>
         /// The class to admit student in
         /// </summary>
-        public string SelectedClass { get; set; }
-
-        public List<string> SectionNames { get; set; }
-
-        /// <summary>
-        /// The class to admit student in
-        /// </summary>
-        public string SelectedSection { get; set; }
-
-        public bool IsSectionValid { get => IsSectionVisible == true ? SelectedSection.IsNotNullOrEmpty() : true; }
+        public ListEntity Sections { get; set; } = new ListEntity { FeildName = "Section", ValidationType = ValidationType.NotEmpty };
 
         /// <summary>
         ///controls "Parent ID not found" alert
@@ -137,8 +127,6 @@ namespace School_Manager
         public bool FatherPhotoVisibility { get; set; }
 
         public bool MotherPhotoVisibility { get; set; }
-
-        public bool IsSectionVisible { get; set; }
 
         #endregion
 
@@ -373,17 +361,17 @@ namespace School_Manager
         /// </summary>
         private void ClassChanged()
         {
-            string classID = DataAccess.GetClassID(SelectedClass);
+            string classID = DataAccess.GetClassID(Classes.Value);
             List<string> list = DataAccess.GetSectionsNames(classID);
             if (list.Count > 0)
             {
-                SectionNames = list;
-                IsSectionVisible = true;
+                Sections.Items = list;
+                Sections.IsEnabled = true;
             }
             else
             {
-                SectionNames = null;
-                IsSectionVisible = false;
+                Sections.Items = null;
+                Sections.IsEnabled = false;
             }
             SetFeePanel();
         }
@@ -422,17 +410,14 @@ namespace School_Manager
                         break;
                     }
                 }
-                if (SelectedClass.IsNullOrEmpty())
+                if (!Classes.IsValid)
                 {
                     isValid = false;
                 }
 
-                if (IsSectionVisible)
+                if (!Sections.IsValid)
                 {
-                    if (SelectedSection.IsNullOrEmpty())
-                    {
-                        isValid = false;
-                    }
+                    isValid = false;
                 }
                 foreach (var item in FeeEntities)
                 {
@@ -550,13 +535,13 @@ namespace School_Manager
 
                 columns += ",[Class_ID]";
                 values += $",@classID";
-                sqlCmd.Parameters.Add(new SqlParameter() { ParameterName = $"@classID", Value = DataAccess.GetClassID(SelectedClass) });
+                sqlCmd.Parameters.Add(new SqlParameter() { ParameterName = $"@classID", Value = DataAccess.GetClassID(Classes.Value) });
 
-                if (IsSectionVisible)
+                if (Sections.IsEnabled)
                 {
                     columns += ",[Section_ID]";
                     values += $",@sectionID";
-                    sqlCmd.Parameters.Add(new SqlParameter() { ParameterName = $"@sectionID", Value = DataAccess.GetSectionID(SelectedSection, DataAccess.GetClassID(SelectedClass)) });
+                    sqlCmd.Parameters.Add(new SqlParameter() { ParameterName = $"@sectionID", Value = DataAccess.GetSectionID(Sections.Value, DataAccess.GetClassID(Classes.Value)) });
                 }
 
                 columns += ",[Student_ID]";
@@ -579,7 +564,7 @@ namespace School_Manager
                 {
                     if (!item.Discount.IsNullOrEmpty())
                     {
-                        DataAccess.ExecuteQuery($"INSERT INTO Discounts (Class_ID , Student_ID , Fee_ID , Discount ) VALUES ({DataAccess.GetClassID(SelectedClass)} , {StudentID} , {item.FeeID} , {item.Discount})");
+                        DataAccess.ExecuteQuery($"INSERT INTO Discounts (Class_ID , Student_ID , Fee_ID , Discount ) VALUES ({DataAccess.GetClassID(Classes.Value)} , {StudentID} , {item.FeeID} , {item.Discount})");
                     }
                 }
 
@@ -719,7 +704,7 @@ namespace School_Manager
                 {
                     MotherPhotoVisibility = true;
                 }
-                else if (ParentsFeilds[i].ToLower().Contains("name"))
+                else if (ParentsFeilds[i].ToLower().Contains("father name"))
                 {
                     var item = new TextEntity
                     {
@@ -779,8 +764,8 @@ namespace School_Manager
         {
             try
             {
-                string classID = DataAccess.GetClassID(SelectedClass);
-                FeeEntities = new ObservableCollection<FeeEntity>(DataAccess.GetDataTable($"SELECT * FROM [Fee_Structure] WHERE Class_ID = {DataAccess.GetClassID(SelectedClass)} ").AsEnumerable().Select(i =>
+                string classID = DataAccess.GetClassID(Classes.Value);
+                FeeEntities = new ObservableCollection<FeeEntity>(DataAccess.GetDataTable($"SELECT * FROM [Fee_Structure] WHERE Class_ID = {DataAccess.GetClassID(Classes.Value)} ").AsEnumerable().Select(i =>
                 new FeeEntity()
                 {
                     Fee = i["Fee"].ToString(),

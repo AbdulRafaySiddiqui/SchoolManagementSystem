@@ -63,7 +63,7 @@ namespace School_Manager
                 SqlCommand.ExecuteNonQuery();
             }
         }
-
+        
         /// <summary>
         /// to get a DataTable against a sql query
         /// </summary>
@@ -2068,6 +2068,27 @@ namespace School_Manager
             return GetDataTable($"SELECT [Designer_Name] FROM Designer WHERE [Designer_Type] = 2 ").AsEnumerable().Select(x => x["Designer_Name"].ToString()).ToList();
         }
 
+        public static void InsertIntoTable(string TableName,List<ColumnEntity> Columns)
+        {
+            if (Columns.Count == 0)
+                return;
+            SqlCommand sqlCmd = new SqlCommand();
+            string columns = "";
+            string values = "";
+            int columnCount = 0;
+            foreach (var column in Columns)
+            {
+                columns += $",[{column.ColumnName}]";
+                values += $",@var{columnCount}";
+                sqlCmd.Parameters.Add(new SqlParameter() { ParameterName = $"@var{columnCount++}", Value = column.Value.IsNullOrEmpty()? (object) DBNull.Value : column.Value});
+            }
+            columns = columns.Remove(0, 1);
+            values = values.Remove(0, 1);
+            sqlCmd.CommandText = $"INSERT INTO {TableName} ({columns}) VALUES ({values})";
+            //commit insertion in database
+            ExecuteQuery(sqlCmd);
+        }
+
         public static string ImportStudentData(
             DataSet dataSet,
             List<MapperEntity> StudentColumnns,
@@ -2075,117 +2096,82 @@ namespace School_Manager
             string Sheet, string ClassID, string SectionID, bool RemoveDulpicateParent)
         {
             var result = "imported";
-            try
+            var studentIdName = GetStudentID();
+            var parentIdName = GetParentID();
+            var isStudentIdImported = false;
+            var isParentIdImported = false;
+            foreach (DataRow row in dataSet.Tables[Sheet].Rows)
             {
-
-                using (SqlConnection sqlConn = new SqlConnection(connectionString))
+                var studentEntities = new List<ColumnEntity>();
+                var parentEntities = new List<ColumnEntity>();
+                var studentID = GetNextID("Students");
+                var parentID = GetNextID("Parents");
+                foreach (var item in StudentColumnns)
                 {
-                    sqlConn.Open();
-                    SqlCommand sqlCmd = new SqlCommand();
-                    sqlCmd.Connection = sqlConn;
+                    //if column is not mapped to anything then do nothing
+                    if (item.Value.IsNullOrEmpty())
+                        continue;
 
-                    //to create columns query
-                    string studentColumns = "";
-                    var studentID = GetStudentID();
-                    bool importID = true;
-                    foreach (var item in StudentColumnns)
+                    if(item.FeildName == studentIdName)
                     {
-                        if (item.FeildName != studentID)
-                        {
-                            if (item.Value.IsNotNullOrEmpty())
-                                studentColumns += $",[{item.FeildName}]";
-                        }
-                        else 
-                        {
-                            studentColumns += $",[Student_ID]";
-                            if (item.Value.IsNullOrEmpty())
-                                importID = false;
-                        }
+                        studentEntities.Add(new ColumnEntity { ColumnName = "Student_ID", 
+                            Value = row[item.Value].ToString().IsNullOrEmpty()? studentID : row[item.Value].ToString() });
+                        isStudentIdImported = true;
                     }
-                    if (studentColumns.IsNotNullOrEmpty())
-                        studentColumns = studentColumns.Remove(0, 1);
-
-                    //to create parent column query
-                    string parentColumns = "";
-                    foreach (var item in ParentColumnns)
+                    else
                     {
-                        if (item.Value.IsNotNullOrEmpty())
-                            parentColumns += $",[{item.FeildName}]";
-                    }
-                    if (parentColumns.IsNotNullOrEmpty())
-                        parentColumns = parentColumns.Remove(0, 1);
-
-                    //for each record
-                    foreach (DataRow row in dataSet.Tables[Sheet].Rows)
-                    {
-                        string parentID = "";
-                        if (RemoveDulpicateParent)
-                        {
-                            //to search if parent record already exists
-                            string whereQuery = "";
-                            foreach (var item in ParentColumnns)
-                            {
-                                if (item.Value.IsNotNullOrEmpty() && item.IsChecked)
-                                {
-                                    whereQuery += $"AND [{item.FeildName}] = '{row[item.Value]}'";
-                                }
-                            }
-                            if (whereQuery.IsNotNullOrEmpty())
-                            {
-                                whereQuery = whereQuery.Remove(0, 3);
-                                parentID = GetDataTable($"SELECT [Parent_ID] FROM Parents WHERE {whereQuery}").AsEnumerable().Select(x => x[0].ToString()).FirstOrDefault();
-                            }
-                        }
-                        if (parentID.IsNullOrEmpty())
-                        {
-                            parentID = GetNextID("Parents");
-                            //to insert parent record
-                            string parentValues = "";
-                            foreach (var column in ParentColumnns)
-                            {
-                                if (column.Value.IsNotNullOrEmpty())
-                                    parentValues += $",'{(row[column.Value].ToString().IsNullOrEmpty() ? "NULL" : row[column.Value])}'";
-                            }
-                            parentValues = parentValues.Remove(0, 1);
-                            sqlCmd.CommandText = $"INSERT INTO Parents ({parentColumns}) VALUES ({parentValues})";
-                            sqlCmd.ExecuteNonQuery();
-                        }
-
-
-                        //to insert student record
-                        string studentValues = "";
-                        
-                        foreach (var column in StudentColumnns)
-                        {
-                            if(column.FeildName == studentID)
-                            {
-                                if(importID)
-                                {
-                                    //if id is empty generate a new id
-                                    studentValues += $",'{(row[column.Value].ToString().IsNullOrEmpty() ? GetNextID("Students") : row[column.Value])}'";
-                                }
-                                else 
-                                    studentValues += $",{GetNextID("Students")}";
-                            }
-                            else
-                            {
-                                if (column.Value.IsNotNullOrEmpty())
-                                    studentValues += $",'{(row[column.Value].ToString().IsNullOrEmpty() ? "NULL" : row[column.Value])}'";
-                            }
-                        }
-                        studentValues = studentValues.Remove(0, 1);
-                        sqlCmd.CommandText = $"INSERT INTO Students ({studentColumns},Class_ID,Section_ID,Parent_ID) " +
-                            $"VALUES ({studentValues},{ClassID},{(SectionID.IsNullOrEmpty() ? "NULL" : SectionID)}," +
-                            $"{(parentID.IsNullOrEmpty() ? "NULL" : parentID)})";
-                        sqlCmd.ExecuteNonQuery();
+                        studentEntities.Add(new ColumnEntity { ColumnName = item.FeildName, Value = row[item.Value].ToString() });
                     }
                 }
+                foreach (var item in ParentColumnns)
+                {
+                    //if column is not mapped to anything then do nothing
+                    if (item.Value.IsNullOrEmpty())
+                        continue;
+                    var columnEntity = new ColumnEntity();
+                    if (item.FeildName == parentIdName)
+                    {
+                        columnEntity.ColumnName = "Parent_ID";
+                        if(row[item.Value].ToString().IsNullOrEmpty())
+                        {
+                            columnEntity.Value = parentID;
+                        }
+                        else
+                        {
+                            columnEntity.Value = row[item.Value].ToString();
+                            parentID = row[item.Value].ToString();
+                        }
+                        parentEntities.Add(new ColumnEntity
+                        {
+                            ColumnName = "Parent_ID",
+                            Value = row[item.Value].ToString().IsNullOrEmpty() ? parentID : row[item.Value].ToString()
+                        });
+                        isParentIdImported = true;
+                    }
+                    else
+                    {
+                        parentEntities.Add(new ColumnEntity { ColumnName = item.FeildName, Value = row[item.Value].ToString() });
+                    }
+                }
+
+                //TODO: for now cannot insert parent id because identity insert is ON, also implement the remove dulpicate parent
+                //if (!isParentIdImported)
+                //    parentEntities.Add(new ColumnEntity { ColumnName = "Parent_ID", Value = parentID });
+                if (!isStudentIdImported)
+                    studentEntities.Add(new ColumnEntity { ColumnName = "Student_ID", Value = studentID });
+
+                studentEntities.Add(new ColumnEntity { ColumnName = "Parent_ID", Value = parentID });
+                studentEntities.Add(new ColumnEntity { ColumnName = "Class_ID", Value = ClassID });
+                studentEntities.Add(new ColumnEntity { ColumnName = "Section_ID", Value = SectionID });
+
+                InsertIntoTable("Parents", parentEntities);
+                InsertIntoTable("Students", studentEntities);
             }
-            catch(SqlException ex)
-            {
-                if(ex.Number == 2627)
-                    result = ex.Message;
-            }
+            //catch(SqlException ex)
+            //{
+            //    if(ex.Number == 2627)
+            //        result = ex.Message;
+            //}
             return result;
         }
 
@@ -2201,30 +2187,45 @@ namespace School_Manager
                 SqlCommand sqlCmd = new SqlCommand();
                 sqlCmd.Connection = sqlConn;
 
-                //to create columns query
-                string teacherColumns = "";
-                foreach (var item in TeacherColumnns)
-                {
-                    if (item.Value.IsNotNullOrEmpty())
-                        teacherColumns += $",[{item.FeildName}]";
-                }
-                if (teacherColumns.IsNotNullOrEmpty())
-                    teacherColumns = teacherColumns.Remove(0, 1);
-
-
                 //for each record
                 foreach (DataRow row in dataSet.Tables[Sheet].Rows)
                 {
-                    //to insert teacher record
-                    string teacherValues = "";
-                    foreach (var column in TeacherColumnns)
+                    var teacherEntities = new List<ColumnEntity>();
+                    var teacherIdName = GetTeacherID();
+                    var teacherID = GetNextID("Teachers");
+                    bool isteacerIdImported = false;
+                    foreach (var item in TeacherColumnns)
                     {
-                        if (column.Value.IsNotNullOrEmpty())
-                            teacherValues += $",{(row[column.Value].ToString().IsNullOrEmpty() ? "NULL" : $"'{row[column.Value]}'")}";
+                        //if column is not mapped to anything then do nothing
+                        if (item.Value.IsNullOrEmpty())
+                            continue;
+                        var columnEntity = new ColumnEntity();
+                        if (item.FeildName == teacherIdName)
+                        {
+                            columnEntity.ColumnName = "Teacher_ID";
+                            if (row[item.Value].ToString().IsNullOrEmpty())
+                            {
+                                columnEntity.Value = teacherID;
+                            }
+                            else
+                            {
+                                columnEntity.Value = row[item.Value].ToString();
+                                teacherID = row[item.Value].ToString();
+                            }
+                            teacherEntities.Add(new ColumnEntity
+                            {
+                                ColumnName = "Teacher_ID",
+                                Value = row[item.Value].ToString().IsNullOrEmpty() ? teacherID : row[item.Value].ToString()
+                            });
+                            isteacerIdImported = true;
+                        }
+                        else
+                        {
+                            teacherEntities.Add(new ColumnEntity { ColumnName = item.FeildName, Value = row[item.Value].ToString() });
+                        }
                     }
-                    teacherValues = teacherValues.Remove(0, 1);
-                    sqlCmd.CommandText = $"INSERT INTO Teachers ({teacherColumns}) VALUES ({teacherValues})";
-                    sqlCmd.ExecuteNonQuery();
+                    
+                    InsertIntoTable("Teachers", teacherEntities);
                 }
             }
         }

@@ -10,8 +10,8 @@
       Title="ApplicationSetup" Background="White">
 
     <StackPanel Margin="20 0">
-        <!--Header-->
-        <local:Header Heading="Application Setup"/>
+        <!--Header--><!--
+        <local:Header Heading="Application Setup"/>-->
         
         <!--Product Information-->
         
@@ -20,7 +20,7 @@
         <TextBox Text="{Binding ProductID,UpdateSourceTrigger=PropertyChanged}" Margin='10 0'/>
         
         <!--Institute Name-->
-        <TextBlock Text="Institue Name:" FontWeight="SemiBold" Margin="10 10 10 0"/>
+        <TextBlock Text="Institute Name:" FontWeight="SemiBold" Margin="10 10 10 0"/>
         <TextBox Text="{Binding InstituteName,UpdateSourceTrigger=PropertyChanged}" Margin="10 0"/>
 
         <!--Setup Button-->

@@ -81,7 +81,7 @@ namespace School_Manager
 
                 ParentColumn = new ObservableCollection<TextEntry>(DataAccess.GetDataTable("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Parents'")
                     .AsEnumerable().Where(x => !x[0].ToString().Contains("_")).
-                    Select(x => new TextEntry { Text = x[0].ToString(), IsEnabled = x[0].ToString().Contains("Name") || x[0].ToString().Contains("Photo") ? false : true }).ToList());
+                    Select(x => new TextEntry { Text = x[0].ToString(), IsEnabled = x[0].ToString().Contains("Father Name") || x[0].ToString().Contains("Photo") ? false : true }).ToList());
             }
             catch (Exception ex)
             {

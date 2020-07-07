@@ -112,7 +112,7 @@
                                        FontWeight="{Binding FontWeight}"
                                        FontSize="{Binding FontSize}"
                                        TextDecorations="{Binding TextDecoration}"
-                                       TextWrapping="Wrap"
+                                       TextWrapping="NoWrap"
                                        Focusable="True"
                                        Foreground="{Binding Foreground}">
                                 <TextBlock.InputBindings>
@@ -207,7 +207,7 @@
                                        FontWeight="{Binding FontWeight}"
                                        FontSize="{Binding FontSize}"
                                        TextDecorations="{Binding TextDecoration}"
-                                       TextWrapping="Wrap"
+                                       TextWrapping="NoWrap"
                                        Focusable="True"
                                        Foreground="{Binding Foreground}"
                                        Background="{Binding Background}">

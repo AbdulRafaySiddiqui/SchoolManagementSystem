@@ -12,7 +12,11 @@ namespace School_Manager
             InitializeComponent();
 
             //set the datacontext
-            DataContext = new SideMenuViewModel();
+            DataContext = new SideMenuViewModel() 
+            { 
+                //turn off the animation for perfermance enhancement
+                IsAnimated = true
+            };
         }
     }
 }

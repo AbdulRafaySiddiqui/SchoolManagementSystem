@@ -43,7 +43,7 @@
                    Visibility="{Binding CanEditHeading,Converter={local:BoolToVisibilityConverter}}"/>
 
         <Viewbox Grid.Row="1" Grid.ColumnSpan="2">
-            <DataGrid HorizontalAlignment="Center"
+            <DataGrid HorizontalAlignment="Center" CanUserSortColumns="False"
                   ItemsSource="{Binding ItemSource, Mode=TwoWay}"
                   AlternatingRowBackground="{StaticResource LightGrayBrush}"
                   RowBackground="{StaticResource LightColorBrush}"

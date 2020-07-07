@@ -14,6 +14,8 @@ namespace School_Manager
 
         public SideMenuViewModel()
         {
+            string Icon = Application.Current.FindResource("DashboardIcon") as string;
+            
             //initialize the properties
             SideMenuItems = new ObservableCollection<SideMenuItem>()
             {
@@ -23,8 +25,8 @@ namespace School_Manager
                     Icon = Application.Current.FindResource("DashboardIcon") as string,
                     Items = new ObservableCollection<SideMenuSubItems>()
                     {
-                        new SideMenuSubItems() { Content = "View Dashboard"  , Page = ApplicationPage.Dashboard},
-                    }
+                        new SideMenuSubItems() { Content = "View Dashboard"  , Page = ApplicationPage.Dashboard , IsSelected = true},
+                    },
                 },
                 new SideMenuItem()
                 {
@@ -109,16 +111,16 @@ namespace School_Manager
                         new SideMenuSubItems() { Content = "Manage Expenses" , Page = ApplicationPage.Expense},
                     }
                 },
-                //new SideMenuItem()
-                //{
-                //    Content = "Message",
-                //    Icon = Application.Current.FindResource("MessageIcon") as string,
-                //    Items = new ObservableCollection<SideMenuSubItems>()
-                //    {
-                //        new SideMenuSubItems() { Content = "Send Message" , Page = ApplicationPage.SendMessage},
-                //        new SideMenuSubItems() { Content = "Outbox" , Page = ApplicationPage.SendMessage},
-                //    }
-                //},
+                new SideMenuItem()
+                {
+                    Content = "Message",
+                    Icon = Application.Current.FindResource("MessageIcon") as string,
+                    Items = new ObservableCollection<SideMenuSubItems>()
+                    {
+                        new SideMenuSubItems() { Content = "Send Message" , Page = ApplicationPage.SendMessage},
+                        //new SideMenuSubItems() { Content = "Outbox" , Page = ApplicationPage.SendMessage},
+                    }
+                },
                 new SideMenuItem()
                 {
                     Content = "Extras",
@@ -146,6 +148,8 @@ namespace School_Manager
             //initialize the commands
             MainItemCommand = new RelayParameterizedCommand(parameter =>  MainItemClick(parameter));
             SubItemCommand = new RelayParameterizedCommand(parameter =>  SubItemClick(parameter));
+
+            //initially set the subitems
         }
 
         #endregion
@@ -153,6 +157,11 @@ namespace School_Manager
         #region Public Properties
 
         public ObservableCollection<SideMenuItem> SideMenuItems { get; set; }
+
+        /// <summary>
+        /// Control the animation behaviour of subitems
+        /// </summary>
+        public bool IsAnimated { get; set; } = true;
 
         #endregion
 
@@ -178,32 +187,36 @@ namespace School_Manager
             if (item.IsOpen)
             {
                 item.IsOpen = false;
-                Storyboard sb = new Storyboard();
-                DoubleAnimation animation = new DoubleAnimation
+                if(IsAnimated)
                 {
-                    Duration = TimeSpan.FromSeconds(0.2),
-                    EasingFunction = new PowerEase() { EasingMode = EasingMode.EaseOut },
-                    From = item.Items.Count * 40,
-                    To = 0
-                };
-                subItems.BeginAnimation(ItemsControl.HeightProperty, animation);
-                await Task.Delay(500);
+                    DoubleAnimation animation = new DoubleAnimation
+                    {
+                        Duration = TimeSpan.FromSeconds(0.2),
+                        EasingFunction = new PowerEase() { EasingMode = EasingMode.EaseOut },
+                        From = item.Items.Count * 40,
+                        To = 0
+                    };
+                    subItems.BeginAnimation(ItemsControl.HeightProperty, animation);
+                    await Task.Delay(500);
+                }
                 subItems.Visibility = Visibility.Collapsed;
             }
             else
             {
                 item.IsOpen = true;
                 subItems.Visibility = Visibility.Visible;
-                Storyboard sb = new Storyboard();
-                DoubleAnimation animation = new DoubleAnimation
+                if(IsAnimated)
                 {
-                    Duration = TimeSpan.FromSeconds(0.2),
-                    EasingFunction = new PowerEase() { EasingMode = EasingMode.EaseIn },
-                    From = 0,
-                    To = item.Items.Count * 40
-                };
-                subItems.BeginAnimation(ItemsControl.HeightProperty, animation);
-                await Task.Delay(500);
+                    DoubleAnimation animation = new DoubleAnimation
+                    {
+                        Duration = TimeSpan.FromSeconds(0.2),
+                        EasingFunction = new PowerEase() { EasingMode = EasingMode.EaseIn },
+                        From = 0,
+                        To = item.Items.Count * 40
+                    };
+                    subItems.BeginAnimation(ItemsControl.HeightProperty, animation);
+                    await Task.Delay(500);
+                }
             }
         }
 

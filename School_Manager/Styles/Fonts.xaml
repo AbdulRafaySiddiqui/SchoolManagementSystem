@@ -14,11 +14,11 @@
     <FontFamily x:Key="MoonLightFont">\Kozuka Gothic Pro B</FontFamily>
     <FontFamily x:Key="MoonBoldFont">pack://application;,,,/Fonts/#ADAM.CG PRO</FontFamily>
 
-    <Style TargetType="{x:Type Control}" x:Key="BaseStyle">
+    <!--<Style TargetType="{x:Type Control}" x:Key="BaseStyle">
         <Setter Property="FontFamily" Value="{StaticResource FontLight}"/>
-    </Style>
+    </Style>-->
 
-    <Style TargetType="{x:Type TextBlock}" x:Key="BaseTextBlockStyle">
+    <!--<Style TargetType="{x:Type TextBlock}" x:Key="BaseTextBlockStyle">
         <Setter Property="FontFamily" Value="{StaticResource FontLight}"/>
     </Style>
 
@@ -26,7 +26,7 @@
     <Style TargetType="{x:Type Label}" BasedOn="{StaticResource BaseStyle}"/>
     <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource BaseStyle}"/>
     <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource BaseStyle}"/>
-    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseTextBlockStyle}"/>
+    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseTextBlockStyle}"/>-->
 
     <!--Font sizes-->
     <system:Double x:Key="FontSizeVerySmall">10</system:Double>
