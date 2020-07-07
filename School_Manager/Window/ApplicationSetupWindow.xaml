@@ -9,5 +9,6 @@
         MinWidth="{Binding DataContext.MinWindowWidth ,RelativeSource={RelativeSource Self}}"
         Style="{StaticResource MainWindowStyle}"
         Title="Institute Management System v.1.0.0" Height="450" Width="800">
-        <local:ApplicationSetup Margin="10"/>
+        
+    <local:ApplicationSetup Margin="10"/>
 </Window>

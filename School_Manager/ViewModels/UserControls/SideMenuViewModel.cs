@@ -14,6 +14,8 @@ namespace School_Manager
 
         public SideMenuViewModel()
         {
+            string Icon = Application.Current.FindResource("DashboardIcon") as string;
+            
             //initialize the properties
             SideMenuItems = new ObservableCollection<SideMenuItem>()
             {
@@ -23,8 +25,8 @@ namespace School_Manager
                     Icon = Application.Current.FindResource("DashboardIcon") as string,
                     Items = new ObservableCollection<SideMenuSubItems>()
                     {
-                        new SideMenuSubItems() { Content = "View Dashboard"  , Page = ApplicationPage.Dashboard},
-                    }
+                        new SideMenuSubItems() { Content = "View Dashboard"  , Page = ApplicationPage.Dashboard , IsSelected = true},
+                    },
                 },
                 new SideMenuItem()
                 {
@@ -109,16 +111,16 @@ namespace School_Manager
                         new SideMenuSubItems() { Content = "Manage Expenses" , Page = ApplicationPage.Expense},
                     }
                 },
-                //new SideMenuItem()
-                //{
-                //    Content = "Message",
-                //    Icon = Application.Current.FindResource("MessageIcon") as string,
-                //    Items = new ObservableCollection<SideMenuSubItems>()
-                //    {
-                //        new SideMenuSubItems() { Content = "Send Message" , Page = ApplicationPage.SendMessage},
-                //        new SideMenuSubItems() { Content = "Outbox" , Page = ApplicationPage.SendMessage},
-                //    }
-                //},
+                new SideMenuItem()
+                {
+                    Content = "Message",
+                    Icon = Application.Current.FindResource("MessageIcon") as string,
+                    Items = new ObservableCollection<SideMenuSubItems>()
+                    {
+                        new SideMenuSubItems() { Content = "Send Message" , Page = ApplicationPage.SendMessage},
+                        //new SideMenuSubItems() { Content = "Outbox" , Page = ApplicationPage.SendMessage},
+                    }
+                },
                 new SideMenuItem()
                 {
                     Content = "Extras",

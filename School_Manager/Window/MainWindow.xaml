@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         MinHeight="{Binding DataContext.MinWindowHeight ,RelativeSource={RelativeSource Self}}"
         MinWidth="{Binding DataContext.MinWindowWidth ,RelativeSource={RelativeSource Self}}"
-        WindowStyle="None" WindowState="Maximized" Topmost="True"
+        WindowStyle="None" WindowState="Maximized"
         WindowStartupLocation="CenterScreen"
         Style="{StaticResource BaseWindowStyle}">
     

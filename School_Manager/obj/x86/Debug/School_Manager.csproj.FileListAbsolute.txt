@@ -11,16 +11,12 @@ C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\LiveChart
 C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\LiveCharts.Wpf.dll
 C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\MaterialDesignColors.dll
 C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\MaterialDesignThemes.Wpf.dll
-C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\Microsoft.Expression.Interactions.dll
 C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\Microsoft.Windows.Shell.dll
-C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\PdfSharp-WPF.dll
 C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\PdfSharp.Charting.dll
 C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\PdfSharp.dll
-C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\PdfSharp.Xps.dll
 C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\QRCoder.dll
 C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\System.Drawing.Common.dll
 C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\System.ValueTuple.dll
-C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\System.Windows.Interactivity.dll
 C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\Xceed.Wpf.AvalonDock.dll
 C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
 C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
@@ -75,6 +71,7 @@ C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\ro\Xceed.
 C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Dell\source\repos\School_Manager\School_Manager\bin\x86\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\School_Manager.csprojAssemblyReference.cache
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\Dialogs\SetProductInformation.g.cs
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\Pages\About.g.cs
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\Pages\ApplicationSetup.g.cs
@@ -225,3 +222,4 @@ C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\School_Ma
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\School_Manager.csproj.CopyComplete
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\School_Manager.exe
 C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\School_Manager.pdb
+C:\Users\Dell\source\repos\School_Manager\School_Manager\obj\x86\Debug\School_Manager.csproj.CoreCompileInputs.cache

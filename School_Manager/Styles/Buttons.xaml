@@ -128,7 +128,6 @@
     <!--  Link Buton  -->
     <Style
         x:Key="LinkButton"
-        BasedOn="{StaticResource BaseStyle}"
         TargetType="{x:Type Button}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}" />

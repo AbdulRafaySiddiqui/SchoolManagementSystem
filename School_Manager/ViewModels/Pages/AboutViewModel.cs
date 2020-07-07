@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace School_Manager
@@ -39,6 +40,8 @@ namespace School_Manager
             }
 
             OpenLicenceCommand = new RelayCommand(OpenLicence);
+            RestoreBackupCommand = new RelayCommand(RestoreBackup);
+            RestoreToDefaultCommand = new RelayCommand(RestoreToDefault);
         }
 
         #endregion
@@ -65,6 +68,12 @@ namespace School_Manager
 
         #region Commands
 
+        public ICommand RestoreToDefaultCommand { get; set; }
+
+        public ICommand RestoreBackupCommand { get; set; }
+
+        public ICommand TakeBackupCommand { get; set; }
+
         public ICommand OpenLicenceCommand { get; set; }
 
         #endregion
@@ -83,6 +92,40 @@ namespace School_Manager
             {
                 Logger.Log(ex, true);
             }
+        }
+
+        private void RestoreToDefault()
+        {
+            try
+            {
+                DataAccess.ExecuteQuery("USE MASTER DROP DATABASE ims_db");
+                DialogManager.ShowMessageDialog("Message", "Successfully restored to default.", DialogTitleColor.Green);
+                Application.Exit();
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void RestoreBackup()
+        {
+            try
+            {
+                var openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Image Files(*.bak)|*.bak";
+                openFileDialog.ShowDialog();
+                if (!string.IsNullOrEmpty(openFileDialog.FileName))
+                {
+                    DataAccess.ExecuteQuery($"USE MASTER DROP DATABASE ims_db; Restore Database ims_db FROM DISK = '{openFileDialog.FileName}' ;");
+                    DialogManager.ShowMessageDialog("Message", "Database restored successfully",DialogTitleColor.Green);
+                }
+            }
+            catch(Exception ex)
+            {
+                Logger.Log(ex, true);
+            }
+            
         }
 
         #endregion

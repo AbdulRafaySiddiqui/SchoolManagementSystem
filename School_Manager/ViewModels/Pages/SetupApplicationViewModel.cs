@@ -22,7 +22,7 @@ namespace School_Manager
 
         #region Properties
 
-        public string ProductID { get; set; } = "000";
+        public string ProductID { get; set; } = "0000";
 
         public string InstituteName { get; set; }
 
@@ -78,12 +78,12 @@ namespace School_Manager
 
             var currentWindow = Application.Current.MainWindow;
 
-            //check if the registeration haven't expired yet
+            //check if the registration haven't expired yet
             var registrationStatus = DataAccess.CheckRegistration();
             if (registrationStatus.Status == RegistrationWarning.Registered)
             {
                 //show the startup window of the application
-                Application.Current.MainWindow = new MainWindow();
+                Application.Current.MainWindow = new LoginWindow();
                 Application.Current.MainWindow.Show();
                 currentWindow.Close();
             }
@@ -98,7 +98,7 @@ namespace School_Manager
             else
             {
                 //show the registration window
-                Application.Current.MainWindow = new RegistrationWindow();
+                Application.Current.MainWindow = new LoginWindow();
                 Application.Current.MainWindow.Show();
                 currentWindow.Close();
             }

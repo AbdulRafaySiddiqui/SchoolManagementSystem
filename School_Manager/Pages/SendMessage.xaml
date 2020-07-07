@@ -19,6 +19,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             
             <!--Header-->
@@ -69,9 +70,11 @@
            
             <!--Response-->
             <TextBlock Text="{Binding Response}"
-                       Grid.Row="4"/>
+                       Grid.Row="4" Margin="20"/>
 
-            <Button Content="Send" Grid.Row="5"
+            <TextBox Text="{Binding MessageCount}" Grid.Row="5" Margin="10"/>
+
+            <Button Content="Send" Grid.Row="6"
                     Command="{Binding SendMessageCommand}"
                     HorizontalAlignment="Center"/>
         </Grid>

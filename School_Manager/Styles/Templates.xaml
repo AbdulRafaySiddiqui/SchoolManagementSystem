@@ -109,7 +109,7 @@
         </DataTemplate.Triggers>
     </DataTemplate>
 
-    
+
     <Style x:Key="FeeTemplate" TargetType="{x:Type Label}">
         <Setter Property="Template">
             <Setter.Value>
@@ -875,7 +875,7 @@
                                FontSize="{StaticResource FontSizeMedium}"/>
                     <Border Background="{StaticResource VeryLightGrayBrush}"
                             CornerRadius="10" Padding="10 5">
-                        <TextBox Text="{Binding Value}"
+                        <TextBox Text="{Binding Value,UpdateSourceTrigger=PropertyChanged}"
                                  Foreground="{StaticResource VeryDarkGrayBrush}"
                                  FontSize="{StaticResource FontSizeMedium}"
                                  BorderThickness="0"
@@ -904,7 +904,7 @@
                                   materialDesign:ComboBoxAssist.ClassicMode="True"
                                   FontSize="{StaticResource FontSizeSmall}"
                                   ItemsSource="{Binding Items}"
-                                  SelectedItem="{Binding Value}"
+                                  SelectedItem="{Binding Value,UpdateSourceTrigger=PropertyChanged}"
                                   BorderThickness="0"/>
                     </Border>
                     <TextBlock
@@ -928,7 +928,7 @@
                             CornerRadius="10" Padding="10 5">
                         <DatePicker IsEnabled="{Binding IsEnabled}"
                                     FontSize="{StaticResource FontSizeSmall}"
-                                    SelectedDate="{Binding Value}"
+                                    SelectedDate="{Binding Value,UpdateSourceTrigger=PropertyChanged}"
                                     BorderThickness="0"/>
                     </Border>
                     <TextBlock Text="{Binding AlertText}"
@@ -949,7 +949,7 @@
                                FontSize="{StaticResource FontSizeMedium}"/>
                     <Border Background="{StaticResource VeryLightGrayBrush}"
                             CornerRadius="10" Padding="10">
-                        <TextBlock Text="{Binding Value}"
+                        <TextBlock Text="{Binding Value,UpdateSourceTrigger=PropertyChanged}"
                                    TextWrapping="Wrap"
                                    Foreground="{StaticResource VeryDarkGrayBrush}"
                                    FontSize="{StaticResource FontSizeMedium}"/>

@@ -382,7 +382,7 @@ namespace School_Manager
                 for (int i = 0; i < StudentsTable.Columns.Count; i++)
                 {
                     if (StudentsTable.Columns[i].ColumnName.ToLower().Contains("parent_id")) { }
-                    else if (StudentsTable.Columns[i].ColumnName.ToLower().Contains("name"))
+                    else if (StudentsTable.Columns[i].ColumnName.ToLower().Contains("father name"))
                     {
                         var item = new TextEntity
                         {
@@ -439,7 +439,8 @@ namespace School_Manager
                         {
                             FeildName = StudentsTable.Columns[i].ColumnName,
                             Value = StudentsTable.Rows[0][i].ToString(),
-                            ValidationType = ValidationType.PhoneNumber
+                            //TODO: change the phone validation
+                            //ValidationType = ValidationType.PhoneNumber
                         };
                         StudentsEntities.Add(item);
                     }
