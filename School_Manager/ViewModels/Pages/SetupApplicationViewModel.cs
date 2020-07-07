@@ -90,7 +90,7 @@ namespace School_Manager
             else if (registrationStatus.Status == RegistrationWarning.Alert)
             {
                 //show the startup window of the application and registration alert
-                Application.Current.MainWindow = new MainWindow();
+                Application.Current.MainWindow = new LoginWindow();
                 Application.Current.MainWindow.Show();
                 DialogManager.ShowMessageDialog("Warning", $"Please register your product it will expire in {registrationStatus.DaysLeft} days.", DialogTitleColor.Yellow);
                 currentWindow.Close();
