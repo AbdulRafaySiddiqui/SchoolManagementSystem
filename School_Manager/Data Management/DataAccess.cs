@@ -2098,8 +2098,8 @@ namespace School_Manager
             var result = "imported";
             var studentIdName = GetStudentID();
             var parentIdName = GetParentID();
-            var isStudentIdImported = false;
             var isParentIdImported = false;
+            var isStudentIdImported = false;
             foreach (DataRow row in dataSet.Tables[Sheet].Rows)
             {
                 var studentEntities = new List<ColumnEntity>();

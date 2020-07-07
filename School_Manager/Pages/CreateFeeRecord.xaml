@@ -6,7 +6,7 @@
                 xmlns:local="clr-namespace:School_Manager"
                 mc:Ignorable="d" 
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-                xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
                 Title="CreateFeeRecord"
                 Background="White">
 

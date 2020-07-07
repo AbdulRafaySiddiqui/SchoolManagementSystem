@@ -581,8 +581,8 @@ namespace School_Manager
 
                 #endregion
 
-                //show messgae
-                DialogManager.ShowMessageDialog("Message", "Student Admitted Successfull!", DialogTitleColor.Green);
+                //show message
+                DialogManager.ShowMessageDialog("Message", "Student Admitted Successfully !", DialogTitleColor.Green);
 
                 ResetStudentsPanel();
                 ResetParentsPanel();

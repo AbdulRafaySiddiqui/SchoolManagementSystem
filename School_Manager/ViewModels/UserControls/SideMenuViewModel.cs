@@ -15,7 +15,7 @@ namespace School_Manager
         public SideMenuViewModel()
         {
             string Icon = Application.Current.FindResource("DashboardIcon") as string;
-            
+
             //initialize the properties
             SideMenuItems = new ObservableCollection<SideMenuItem>()
             {
