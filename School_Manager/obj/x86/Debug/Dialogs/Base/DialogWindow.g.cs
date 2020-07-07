@@ -9,6 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using LiveCharts.Wpf;
 using School_Manager;
 using System;
 using System.Diagnostics;

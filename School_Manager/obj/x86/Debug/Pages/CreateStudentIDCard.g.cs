@@ -23,7 +23,6 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Ink;
 using System.Windows.Input;
-using System.Windows.Interactivity;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -34,6 +33,20 @@ using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
+using Xceed.Wpf.Toolkit;
+using Xceed.Wpf.Toolkit.Chromes;
+using Xceed.Wpf.Toolkit.Core.Converters;
+using Xceed.Wpf.Toolkit.Core.Input;
+using Xceed.Wpf.Toolkit.Core.Media;
+using Xceed.Wpf.Toolkit.Core.Utilities;
+using Xceed.Wpf.Toolkit.Panels;
+using Xceed.Wpf.Toolkit.Primitives;
+using Xceed.Wpf.Toolkit.PropertyGrid;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using Xceed.Wpf.Toolkit.PropertyGrid.Commands;
+using Xceed.Wpf.Toolkit.PropertyGrid.Converters;
+using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
+using Xceed.Wpf.Toolkit.Zoombox;
 
 
 namespace School_Manager {
